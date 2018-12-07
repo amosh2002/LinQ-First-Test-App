@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LinQ
@@ -69,21 +70,37 @@ namespace LinQ
             //Enumerable.Empty<string>();  //returns an empty list, to prevent thr program from being excepted if the list is null
 
 
-
-
-
-
-
-
-
-
-
-
-
-
             var query2 = from n in names
                          where n.Contains("a")
                          select n.ToUpper();
+
+
+
+
+
+
+
+
+
+
+
+
+            IEnumerable<string> query3 =
+                from n in names
+                select Regex.Replace(n, "[aeiou]", "")
+                into NewValue
+                where NewValue.Length > 2 //Harcnel
+                orderby NewValue
+                select NewValue;
+
+            var query4 =
+                from a in (
+                    from b in names
+                    select Regex.Replace(b, "[aeiou]", "")
+                    )
+                where a.Length > 2
+                orderby a
+                select a;
 
         }
     }
