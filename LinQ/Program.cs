@@ -24,10 +24,62 @@ namespace LinQ
                 .OrderBy(x=>x.Length)
                 .Select(x => x.ToUpper());
 
+            var count = query.Count();
+
             foreach (var name in query) {
                 Console.WriteLine(name);
                 Console.ReadLine();
             }
+            Console.WriteLine(count);
+
+            //-------------------Filtration-------------------//
+            //names.Take(5);  //takes first five elements
+            //names.Skip(2);  //skips first two elements
+            //names.SkipWhile();  //skips while something
+            //names.TakeWhile();  //takes while something
+            //names.Distinct(); //takes only unique, non-repeatable elements
+
+            //-------------------Select-------------------//
+            //names.Select();  //selects an element and changes it to other one
+            //names.SelectMany();  //selects many elements and changes them to other ones
+
+            //-------------------Join-------------------//
+            //names.Join();  //joins elements 
+            //names.GroupJoin();  //Harcnel
+
+            //-------------------Order-------------------//
+            //names.OrderBy();  //puts elements in the mentioned order (ascending)
+            //names.OrderByDescending(); //puts elements in the mentioned order (descending)
+
+            //-------------------Connect-------------------//
+            //names.Concat();  //connects 2 lists in 1
+            //names.union();  //connects 2 lists in 1 without repeating ones
+            //names.Intercect();  //finds repeating elements in 2 lists
+            //names.Except();  //finds non-repeating elements in 2 lists
+
+            //-------------------Export-------------------//
+            //names.ToArray();  //converts the elements to array 
+            //names.ToList();  //converts the elements to list
+
+            //-------------------Elementing-------------------//
+            //names.Single();  //takes the only element matching the mentioned principe
+            //names.SingleOrDefault();  //takes the only element matching the mentioned principe, if nothing found returns the whole list
+
+            //-------------------Other-------------------//
+            //Enumerable.Empty<string>();  //returns an empty list, to prevent thr program from being excepted if the list is null
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             var query2 = from n in names
                          where n.Contains("a")
