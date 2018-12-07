@@ -8,14 +8,31 @@ namespace LinQ
 {
     class Program
     {
+         static string[] names = { "Tom", "Ann", "David", "Mary" };
+
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            var list = new List<string>();
+            foreach (var name in names) {
+                if (name.Contains("a"))
+                    list.Add(name.ToUpper());
+                
+            }
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            var query = names
+                .Where(x => x.Contains("a"))
+                .OrderBy(x=>x.Length)
+                .Select(x => x.ToUpper());
+
+            foreach (var name in query) {
+                Console.WriteLine(name);
+                Console.ReadLine();
+            }
+
+            var query2 = from n in names
+                         where n.Contains("a")
+                         select n.ToUpper();
+
         }
     }
 }
